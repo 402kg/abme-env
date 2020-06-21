@@ -1,7 +1,7 @@
 version: "3"
 
 networks:
-  portyx-net:
+  abme-net:
 
 services:
   nginx:
@@ -9,7 +9,7 @@ services:
     image: nginx:1.17.9
     restart: always
     networks:
-      - portyx-net
+      - abme-net
     volumes:
       - ./nginx-local:/etc/nginx/conf.d
     ports:
@@ -20,7 +20,7 @@ services:
     image: mongo:4.2.3
     restart: always
     networks:
-      - portyx-net
+      - abme-net
     volumes:
       - ./data/mongo:/data/db
     ports:
@@ -31,7 +31,7 @@ services:
     image: redis
     restart: always
     networks:
-      - portyx-net
+      - abme-net
     volumes:
       - ./data/redis:/data
     ports:
@@ -42,7 +42,7 @@ services:
     image: postgres
     restart: always
     networks:
-      - portyx-net
+      - abme-net
     environment:
       POSTGRES_USER: sentry
       POSTGRES_PASSWORD: secret
@@ -56,7 +56,7 @@ services:
     image: sentry
     restart: always
     networks:
-      - portyx-net
+      - abme-net
     env_file:
       - .env
     ports:
@@ -69,7 +69,7 @@ services:
     image: sentry
     command: run cron
     networks:
-      - portyx-net
+      - abme-net
     env_file:
       - .env
     depends_on:
@@ -81,7 +81,7 @@ services:
     image: sentry
     command: run worker
     networks:
-      - portyx-net
+      - abme-net
     env_file:
       - .env
     depends_on:

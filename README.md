@@ -1,18 +1,14 @@
-# portyx-env
+# abme-env
 
 #### hosts
 
 ```
-127.0.0.1        portyx.local
-127.0.0.1        api.portyx.local
-127.0.0.1        sentry.portyx.local
+127.0.0.1        abme.local
+127.0.0.1        api.abme.local
+127.0.0.1        sentry.abme.local
 ```
 
-#### setup
-- pull images `docker-compose pull`
-
-### Sentry setup
-- generate secret key `docker-compose run --rm sentry config generate-secret-key`
+#### sentry setup
 - copy `.env-example` as `.env` and paste secret key
-- up instance `docker compose up -d`
+- generate secret key `docker-compose run --rm sentry config generate-secret-key`
 - run migrations `docker-compose run --rm sentry upgrade`
